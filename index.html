@@ -191,13 +191,18 @@ footer {
 }
 @media (max-width: 600px) {
     nav {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        flex-direction: row;   /* keep horizontal */
+        flex-wrap: wrap;       /* allow wrapping to next line */
+        justify-content: center;
+        gap: 6px;
+        padding: 10px;
     }
 
     nav a {
-        width: 90%;
-        text-align: center;
+        font-size: 12px;
+        padding: 6px 8px;
+        margin: 2px;
     }
 }
 </style>
