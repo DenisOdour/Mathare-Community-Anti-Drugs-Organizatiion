@@ -55,6 +55,14 @@ nav a {
     text-align: center;
     overflow: hidden;
 }
+.hero-box {
+    position: relative;
+    z-index: 2;
+    background: rgba(0,0,0,0.4);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+}
 
 /* slides */
 .hero-slide {
@@ -90,10 +98,15 @@ nav a {
 
 .card {
     background: rgb(7, 209, 216);
-    padding: 35px;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    text-align: center;
+
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    overflow-wrap: break-word;
 }
 
 /* ACCORDION */
@@ -121,6 +134,17 @@ nav a {
     border-radius: 5px;
 }
 
+.pillars-container,
+.approach-container {
+    display: flex;
+    flex-wrap: wrap;      /* allows boxes to move to next line */
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
 /* GALLERY */
 .gallery {
     display: grid;
@@ -135,17 +159,18 @@ nav a {
     border-radius: 10px;
     cursor: pointer;
 }
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.image-container {
+    height: auto;
+    overflow: visible;
+}
 
 /* POPUP */
-.popup {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .popup img {
     max-width: 80%;
@@ -189,20 +214,59 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+.approach-long-text {
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+}
+.card p, .card li {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+.impact-card, .donate-card {
+    cursor: pointer;
+}
+.impact-card, .donate-card {
+    cursor: pointer;
+}
 @media (max-width: 600px) {
     nav {
-        display: flex;
-        flex-direction: row;   /* keep horizontal */
-        flex-wrap: wrap;       /* allow wrapping to next line */
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 6px;
-        padding: 10px;
+        gap: 5px;
     }
 
     nav a {
-        font-size: 12px;
-        padding: 6px 8px;
-        margin: 2px;
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+@media (max-width: 600px) {
+    .pillar-box,
+    .approach-box {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 600px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 100%;
     }
 }
 </style>
@@ -256,7 +320,8 @@ footer {
 </div>
 </section>
 
-    <div class="card">
+<section class="section" id="approach">
+  <div class="card">
         <h3>Our Approach</h3>
         <p>MCADO employs a holistic, community-driven approach to prevent and reduce drug and substance abuse, focusing on rehabilitation, empowerment, education, and sustained recovery. This approach is implemented through our two core thematic areas: Community Dialogue & Prevention, and Community Empowerment & Recovery Support.</p> 
 <h4>1. Community Dialogue & Prevention </h4>
@@ -277,6 +342,7 @@ footer {
     <li><strong>Climate Resilience for Older Adults:</strong>Empowering parents and grandparents through psychosocial support, urban gardening, and climate education. </li>
 </ul> 
     </div>
+</section>
 <div class="cards">
     <div class="card">
 <h2>Our Major Pillars</h2>
@@ -502,7 +568,7 @@ footer {
 </section>
 <section id="donate" class="section">
 <h2>Support Our Work</h2>
-<p>Your contribution helps us fight drug abuse and empower youth.</p>
+<p>Your contribution helps us fight drug abuse and empower youth.<br>Click on the any section you feel like to offer support</p>
 
 <div class="cards">
 
@@ -654,9 +720,6 @@ function closeActivity(){
 
 
 // ================= DONATE BUTTON =================
-function donate(){
-    alert("Thank you for supporting MCADO!")
-}
 const impactPopup = document.getElementById("impactPopup");
 const impactTitle = document.getElementById("impactTitle");
 const impactText = document.getElementById("impactText");
@@ -830,11 +893,6 @@ const observer = new IntersectionObserver(entries => {
 
 observer.observe(document.getElementById("impact"));
 
-document.addEventListener("DOMContentLoaded", function(){
-
-// ALL YOUR JS HERE
-
-});
 </script>
 
 </body>
